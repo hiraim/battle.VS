@@ -6391,3 +6391,4 @@ enchant.Tween = enchant.Class.create(enchant.Action, {
  *
  */
 }(window));
+
