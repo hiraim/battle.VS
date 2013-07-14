@@ -23,19 +23,16 @@ window.onload = function(){
         bar.value = 100;
         bar.maxvalue = 100;
         scene.ontouchstart = function(){
-            bar.value -= 10;
-    if(bar.value <= 0){
-    
-        satan.remove();
-       game.end();
-    
-    }
+            if(bar.value <= 0){
+                satan.remove();
+                game.end();
+            }
         }
         
         var human = new Sprite(200,200);
         human.image = game.assets['images/chara9.png'];
-       human.x = 50;
-       human.y = 180;
+        human.x = 50;
+        human.y = 180;
         human.scaleX = 0.3;
         human.scaleY = 0.3;
       
@@ -50,7 +47,7 @@ window.onload = function(){
         
         
         var bg = new Sprite(320,320);
-       bg.image = game.assets["images/back.jpeg"];
+        bg.image = game.assets["images/back.jpeg"];
         
         
         var icon = new Sprite(200,240);
@@ -73,6 +70,7 @@ window.onload = function(){
         kougekico.addEventListener(Event.TOUCH_END,function(e){
           
             HP -= 10;
+            bar.value -=10;
             label.text = "HP:"+HP;
         });
         
@@ -88,6 +86,7 @@ window.onload = function(){
         thunderstormco.addEventListener(Event.TOUCH_END,function(e){
           
             HP -= 10;
+            bar.value -=10;
             label.text = "HP:"+HP;
         
         });
