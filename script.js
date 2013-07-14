@@ -21,12 +21,12 @@ window.onload = function(){
         bar.image = game.assets["images/bar.png"];
         bar.value = 100;
         bar.maxvalue = 100;
-        bar.on("enterframe",function(){
-            if(this.age % 60 == 0){
-                this.value -= 1;
+        scene.ontouchstart = function(){
+            bar.value -= 10;
+    if(bar.value <= 0){
+        satan.remove();
             }
-
-        });
+        }
         
         var human = new Sprite(200,200);
         human.image = game.assets['images/chara9.png'];
