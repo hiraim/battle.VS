@@ -4,6 +4,7 @@ window.onload = function(){
     var game = new Game(320,320);
   var HP = 100;
     
+
     var label =  new Label("HP:" + HP);
     label.fontSize = "100px";
     label.x = 150;
@@ -24,8 +25,11 @@ window.onload = function(){
         scene.ontouchstart = function(){
             bar.value -= 10;
     if(bar.value <= 0){
+    
         satan.remove();
-            }
+       game.end();
+    
+    }
         }
         
         var human = new Sprite(200,200);
