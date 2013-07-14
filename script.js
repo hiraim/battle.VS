@@ -2,17 +2,32 @@ enchant();
 
 window.onload = function(){
     var game = new Game(320,320);
-  var score = 100;
+  var HP = 100;
     
-    var label =  new Label("SCORE:" + score);
-    label.font = "64px";
-    label.x = 20;
+    var label =  new Label("HP:" + HP);
+    label.fontSize = "100px";
+    label.x = 150;
     label.y = 20;
 
    
- game.preload('images/chara9.png','images/chara10.jpeg','images/back.jpeg','images/icon.jpeg','images/kougekico.jpeg','images/thunderstormco.jpeg','images/guardco.jpeg','images/shirkco.jpeg');
+ game.preload('images/chara9.png','images/chara10.jpeg','images/back.jpeg','images/icon.jpeg','images/kougekico.jpeg','images/thunderstormco.jpeg','images/guardco.jpeg','images/shirkco.jpeg',"images/bar.png");
     
     game.onload = function(){
+        
+        var scene = game.rootScene;
+        
+        
+        var bar = new enchant.ui.Bar(200,15);
+        bar.image = game.assets["images/bar.png"];
+        bar.value = 100;
+        bar.maxvalue = 100;
+        bar.on("enterframe",function(){
+            if(this.age % 60 == 0){
+                this.value -= 1;
+            }
+
+        });
+        
         var human = new Sprite(200,200);
         human.image = game.assets['images/chara9.png'];
        human.x = 50;
@@ -25,7 +40,7 @@ window.onload = function(){
         satan.image = 
             game.assets['images/chara10.jpeg'];
         satan.x = 200;
-        satan.y = 20;
+        satan.y = 30;
         
         var scene = game.rootScene;
         
@@ -53,8 +68,8 @@ window.onload = function(){
     
         kougekico.addEventListener(Event.TOUCH_END,function(e){
           
-            score -= 10;
-            label.text = "SCORE:"+score;
+            HP -= 10;
+            label.text = "HP:"+HP;
         });
         
         
@@ -68,8 +83,8 @@ window.onload = function(){
         
         thunderstormco.addEventListener(Event.TOUCH_END,function(e){
           
-            score -= 10;
-            label.text = "SCORE:"+score;
+            HP -= 10;
+            label.text = "HP:"+HP;
         
         });
             
@@ -105,7 +120,8 @@ window.onload = function(){
         game.rootScene.addChild(thunderstormco);
         game.rootScene.addChild(guardco);
         game.rootScene.addChild(shirkco);
-   
+        game.rootScene.addChild(bar);
+       
     };
     
     game.start();
